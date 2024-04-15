@@ -12,29 +12,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
-import com.ssmu.security.model.Category;
-import com.ssmu.security.services.CategoryService;
+import com.ssmu.security.model.Store;
+import com.ssmu.security.services.StoreService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("api_v1/categories")
+@RequestMapping("api_v1/stores")
 // @SecurityRequirement(name = "bearerAuth")
-@Tag(name = "Category", description = "The User API. Contains all the operations that can be performed on a category.")
-public class CategoryController {
+@Tag(name = "Category", description = "The User API. Contains all the operations that can be performed on a Store.")
+public class StoreController {
 
     @Autowired
-    private CategoryService categoryService;
+    private StoreService storeService;
 
-    @Operation(summary = "Get all categories", description = "Get all categories")
+    @Operation(summary = "Get all stores", description = "Get all stores")
     // @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Category>> listar() {
+    public ResponseEntity<List<Store>> listar() {
         System.out.println("listar todos>>>");
 
         try {
-            return ResponseEntity.ok(categoryService.getAllCategories());
+            return ResponseEntity.ok(storeService.getAllStores());
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -45,19 +45,19 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Category buscar(@PathVariable Long id) {
-        return categoryService.getCategoryById(id);
+    public Store buscar(@PathVariable Long id) {
+        return storeService.getStoreById(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void borrar(@PathVariable Long id) {
-        categoryService.deleteCategoryById(id);
+        storeService.deleteStoreById(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void atualizar(@PathVariable Integer id, @RequestBody Category category) {
-        category.setId(id);
-        categoryService.updateCategory(category);
+    public void atualizar(@PathVariable Integer id, @RequestBody Store store) {
+        store.setId(id);
+        storeService.updateStore(store);
     }
 
     /*
