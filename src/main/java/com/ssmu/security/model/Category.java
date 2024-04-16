@@ -1,46 +1,100 @@
 package com.ssmu.security.model;
 
-import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import lombok.Data;
+
+@Data
 @Entity
+@DynamicInsert
+@DynamicUpdate
 @Table(name = "category", uniqueConstraints = {
-  @UniqueConstraint(columnNames = "name"),
-  @UniqueConstraint(columnNames = "id")
+        @UniqueConstraint(columnNames = "name"),
+        @UniqueConstraint(columnNames = "logoUrl"),
+        @UniqueConstraint(columnNames = "id")
 })
-
 public class Category {
-  @Id
-//   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+
+    @Id
+    @Column(name = "id", nullable = false, length = 50, insertable = true, updatable = true)
+    private Long id;
+
+    @Column(name = "name", nullable = false, length = 50, insertable = true, updatable = true)
+    private String name;
+    
+    @Column(name = "logoUrl", nullable = false, length = 1000, insertable = true, updatable = true)
+    private String logoUrl;
 
 
-  @Enumerated(EnumType.STRING)
-  @Column(length = 20)
-  private ECategory name;
+    public Category() {
+    }
 
-  public Category() {
+    public Category(String name, Long id, String logoUrl) {
+        this.name = name;
+        this.id = id;
+        this.logoUrl=logoUrl;
+        
+    }
 
+    public Category(Long id, String logoUrl) {
+        this.id = id;
+        this.logoUrl=logoUrl;
+    }
+
+    public Category(String name, String logoUrl) {
+      this.name = name;
+      this.logoUrl=logoUrl;
   }
 
-  public Category(ECategory name) {
-    this.name = name;
-  }
+    public Category(int id, String name, String logoUrl) {
+        this.id = Long.valueOf(id);
+        this.name = name;
+        this.logoUrl = logoUrl;
+    }
 
-public Integer getId() {
-    return id;
-}
+    public Long getId() {
+        return id;
+    }
 
-public void setId(Integer id) {
-    this.id = id;
-}
+    public String getName() {
+        return name;
+    }
 
-public ECategory getName() {
-    return name;
-}
+    public String getLogoUrl() {
+        return logoUrl;
+    }
 
-public void setName(ECategory name) {
-    this.name = name;
-}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Category [id=" + id + ", name=" + name + ", logoUrl=" + logoUrl + "]";
+    }
+
 }
