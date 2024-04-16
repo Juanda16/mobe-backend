@@ -55,7 +55,7 @@ public class StoreController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void atualizar(@PathVariable Integer id, @RequestBody Store store) {
+    public void atualizar(@PathVariable Long id, @RequestBody Store store) {
         store.setId(id);
         storeService.updateStore(store);
     }

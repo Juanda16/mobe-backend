@@ -55,7 +55,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void atualizar(@PathVariable Integer id, @RequestBody Category category) {
+    public void atualizar(@PathVariable Long id, @RequestBody Category category) {
         category.setId(id);
         categoryService.updateCategory(category);
     }
