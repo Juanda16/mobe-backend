@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
+import lombok.Builder.Default;
 
 @Data
 @Entity
@@ -18,13 +19,24 @@ import lombok.Data;
 @Table(name = "stores", uniqueConstraints = {
     @UniqueConstraint(columnNames = "id"),
     @UniqueConstraint(columnNames = "name"),
+    @UniqueConstraint(columnNames = "email"),
     @UniqueConstraint(columnNames = "address"),
     @UniqueConstraint(columnNames = "picUrl"),
     @UniqueConstraint(columnNames = "phone"),
     @UniqueConstraint(columnNames = "description"),
-    @UniqueConstraint(columnNames = "rating")
-    
+    @UniqueConstraint(columnNames = "rating"),
+    @UniqueConstraint(columnNames = "city"),
+    @UniqueConstraint(columnNames = "country"),
+    @UniqueConstraint(columnNames = "type"),
+    @UniqueConstraint(columnNames = "latitude"),
+    @UniqueConstraint(columnNames = "longitude")
+
 })
+
+
+
+
+
 
 public class Store {
   @Id
@@ -33,6 +45,9 @@ public class Store {
 
   @Column(name = "name", nullable = false, length = 50, insertable = true, updatable = true)
   private String name;
+
+  @Column(name = "email", nullable = false, length = 50, insertable = true, updatable = true)
+  private String email;
 
   @Column(name = "address", nullable = false, length = 100, insertable = true, updatable = true)
   private String address;
@@ -49,91 +64,122 @@ public class Store {
   @Column(name = "rating", nullable = false, length = 100, insertable = true, updatable = true)
   private Float rating;
 
- 
+  @Column(name = "city", nullable = false, length = 100, insertable = true, updatable = true)
+  private String city;  
+
+  @Column(name = "country", nullable = false, length = 100, insertable = true, updatable = true)
+  private String country;
+
+  @Column(name = "type", nullable = false, length = 100, insertable = true, updatable = true)
+  private String type;
+
   public Store() {
   }
 
-  public Store(Long id, String name, String address, String picUrl, Integer phone, Float rating, String description) {
+  public Store(Long id, String name, String email, String address, String picUrl, Integer phone, Float rating, String description, String city, String country, String type){
     this.id = id;
     this.name = name;
+    this.email = email;
     this.address = address;
     this.picUrl = picUrl;
     this.phone = phone;
     this.rating = rating;
     this.description = description;
+    this.city = city;
+    this.country = country;
+    this.type = type;
   }
+
   public Store(String name) {
     this.name = name;
   }
+
   public Store(Long id) {
     this.id = id;
 
   }
-  
+
   public Store(int id, String name, String picUrl) {
     this.id = Long.valueOf(id);
     this.name = name;
     this.picUrl = picUrl;
-}
- 
+  }
 
   public Long getId() {
     return id;
-}
+  }
 
-public String getName() {
+  public String getName() {
     return name;
-}
+  }
 
-public String getAddress() {
+  public String getEmail() {
+    return email;
+  }
+  public String getAddress() {
     return address;
-}
+  }
 
-public String getPicUrl() {
+  public String getPicUrl() {
     return picUrl;
-}
+  }
 
-public Integer getPhone() {
-  return phone;
-}
+  public Integer getPhone() {
+    return phone;
+  }
 
-public Float getRating() {
-  return rating;
-}
+  public Float getRating() {
+    return rating;
+  }
 
-public String getDescription() {
-  return description;
-}
+  public String getDescription() {
+    return description;
+  }
 
-public void setId(Long id) {
-  this.id = id;
-}
-public void setName(String name) {
-  this.name = name;
-}
-public void setAddress(String address) {
-  this.address = address;
-}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-public void setPicUrl(String picUrl) {
-  this.picUrl = picUrl;
-}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-public void setPhone(Integer phone) {
-  this.phone = phone;
-}
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
-public void setRating(Float rating) {
-  this.rating = rating;
-}
+  public void setPicUrl(String picUrl) {
+    this.picUrl = picUrl;
+  }
 
-public void setDescription(String description) {
-  this.description = description;
-}
+  public void setPhone(Integer phone) {
+    this.phone = phone;
+  }
 
-@Override
-    public String toString() {
-        return "Store [id=" + id + ", name=" + name + ", address=" + address + ", picUrl=" + picUrl + ", phone=" + phone + ", rating=" + rating+ "]";
-    }
+  public void setRating(Float rating) {
+    this.rating = rating;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  @Override
+  public String toString() {
+    return "Store [id=" + id + ", name=" + name + ", email=" + email +", address=" + address + ", picUrl=" + picUrl + ", phone=" + phone
+        + ", rating=" + rating + ", city= " + city + ", country=" + country +" , type=" + type + "]";
+  }
 
 }
