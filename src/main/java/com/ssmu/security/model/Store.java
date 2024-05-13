@@ -73,10 +73,16 @@ public class Store {
   @Column(name = "type", nullable = false, length = 100, insertable = true, updatable = true)
   private String type;
 
+  @Column(name = "latitude", nullable = false, length = 100, insertable = true, updatable = true)
+  private String latitude;
+
+  @Column(name = "longitude", nullable = false, length = 100, insertable = true, updatable = true)
+  private String longitude;
+
   public Store() {
   }
 
-  public Store(Long id, String name, String email, String address, String picUrl, Integer phone, Float rating, String description, String city, String country, String type){
+  public Store(Long id, String name, String email, String address, String picUrl, Integer phone, Float rating, String description, String city, String country, String type, String latitude, String longitude){
     this.id = id;
     this.name = name;
     this.email = email;
@@ -88,6 +94,8 @@ public class Store {
     this.city = city;
     this.country = country;
     this.type = type;
+    this.latitude = latitude;
+    this.longitude = longitude;
   }
 
   public Store(String name) {
@@ -176,10 +184,18 @@ public class Store {
     this.type = type;
   }
 
+  public void setLatitude(String latitude) {
+    this.latitude = latitude;
+  }
+
+  public void setLongitude(String longitude) {
+    this.longitude = longitude;
+  }
+
   @Override
   public String toString() {
     return "Store [id=" + id + ", name=" + name + ", email=" + email +", address=" + address + ", picUrl=" + picUrl + ", phone=" + phone
-        + ", rating=" + rating + ", city= " + city + ", country=" + country +" , type=" + type + "]";
+        + ", rating=" + rating + ", city= " + city + ", country=" + country +" , type=" + type + ", latitude=" + latitude + ", longitude=" + longitude + "]";
   }
 
 }
