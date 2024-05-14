@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
-import lombok.Builder.Default;
+
 
 @Data
 @Entity
@@ -21,13 +21,10 @@ import lombok.Builder.Default;
     @UniqueConstraint(columnNames = "name"),
     @UniqueConstraint(columnNames = "type"),
     @UniqueConstraint(columnNames = "picUrl"),
+    @UniqueConstraint(columnNames = "price"),
     @UniqueConstraint(columnNames = "store")    
     
 })
-
-
-
-
 
 
 public class Product {
@@ -47,6 +44,9 @@ public class Product {
   @Column(name = "store", nullable = false, length = 100, insertable = true, updatable = true)
   private String store;
 
+  @Column(name = "price", nullable = false, length = 100, insertable = true, updatable = true)
+  private String price;
+
 
 
 
@@ -54,12 +54,13 @@ public class Product {
   public Product() {
   }
 
-  public Product(Long id, String name,  String type, String picUrl, String store){
+  public Product(Long id, String name,  String type, String picUrl, String store, String price) {
     this.id = id;
     this.name = name;
     this.type = type;
     this.picUrl = picUrl;
     this.store = store;
+    this.price = price;
 
   }
 
@@ -98,6 +99,10 @@ public class Product {
     return store;
   }
 
+  public String getPrice() {
+    return price;
+  }
+
   public void setId(Long id) {
     this.id = id;
   }
@@ -118,11 +123,15 @@ public class Product {
     this.store = store;
   }
 
+  public void setPrice(String price) {
+    this.price = price;
+  }
+
 
 
   @Override
   public String toString() {
-    return "Store [id=" + id + ", name=" + name + ", type=" + type + ", picUrl=" + picUrl + ", store=" + store +"]";
+    return "Store [id=" + id + ", name=" + name + ", type=" + type + ", picUrl=" + picUrl + ", store=" + store +", price=" + price +"]";
   }
 
 }
