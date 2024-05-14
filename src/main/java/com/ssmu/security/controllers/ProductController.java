@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("api_v1/products")
 // @SecurityRequirement(name = "bearerAuth")
-@Tag(name = "Category", description = "The User API. Contains all the operations that can be performed on a Product.")
+@Tag(name = "Products", description = "The User API. Contains all the operations that can be performed on a Product.")
 public class ProductController {
 
     @Autowired

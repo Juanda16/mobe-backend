@@ -56,7 +56,7 @@ public class Store {
   private String picUrl;
 
   @Column(name = "phone", nullable = false, length = 100, insertable = true, updatable = true)
-  private Integer phone;
+  private String phone;
 
   @Column(name = "description", nullable = false, length = 100, insertable = true, updatable = true)
   private String description;
@@ -82,7 +82,7 @@ public class Store {
   public Store() {
   }
 
-  public Store(Long id, String name, String email, String address, String picUrl, Integer phone, Float rating, String description, String city, String country, String type, String latitude, String longitude){
+  public Store(Long id, String name, String email, String address, String picUrl, String phone, Float rating, String description, String city, String country, String type, String latitude, String longitude){
     this.id = id;
     this.name = name;
     this.email = email;
@@ -132,7 +132,7 @@ public class Store {
     return picUrl;
   }
 
-  public Integer getPhone() {
+  public String getPhone() {
     return phone;
   }
 
@@ -160,7 +160,7 @@ public class Store {
     this.picUrl = picUrl;
   }
 
-  public void setPhone(Integer phone) {
+  public void setPhone(String phone) {
     this.phone = phone;
   }
 
