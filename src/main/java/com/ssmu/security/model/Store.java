@@ -74,15 +74,15 @@ public class Store {
   private String type;
 
   @Column(name = "latitude", nullable = false, length = 100, insertable = true, updatable = true)
-  private String latitude;
+  private Float latitude;
 
   @Column(name = "longitude", nullable = false, length = 100, insertable = true, updatable = true)
-  private String longitude;
+  private Float longitude;
 
   public Store() {
   }
 
-  public Store(Long id, String name, String email, String address, String picUrl, String phone, Float rating, String description, String city, String country, String type, String latitude, String longitude){
+  public Store(Long id, String name, String email, String address, String picUrl, String phone, Float rating, String description, String city, String country, String type, Float latitude, Float longitude){
     this.id = id;
     this.name = name;
     this.email = email;
@@ -184,11 +184,11 @@ public class Store {
     this.type = type;
   }
 
-  public void setLatitude(String latitude) {
+  public void setLatitude(Float latitude) {
     this.latitude = latitude;
   }
 
-  public void setLongitude(String longitude) {
+  public void setLongitude(Float longitude) {
     this.longitude = longitude;
   }
 
