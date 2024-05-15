@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
-import lombok.Builder.Default;
+
 
 @Data
 @Entity
@@ -144,6 +144,18 @@ public class Store {
     return description;
   }
 
+  public String getCity() {
+    return city;
+  }
+
+  public Float getLatitude() {
+    return rating;
+  }
+
+  public Float getLongitude() {
+    return rating;
+  }
+  
   public void setId(Long id) {
     this.id = id;
   }
@@ -195,7 +207,7 @@ public class Store {
   @Override
   public String toString() {
     return "Store [id=" + id + ", name=" + name + ", email=" + email +", address=" + address + ", picUrl=" + picUrl + ", phone=" + phone
-        + ", rating=" + rating + ", city= " + city + ", country=" + country +" , type=" + type + ", latitude=" + latitude + ", longitude=" + longitude + "]";
+        + ", rating=" + rating + ", city= " + city + ", country=" + country +" , type=" + type + "]";
   }
 
 }
