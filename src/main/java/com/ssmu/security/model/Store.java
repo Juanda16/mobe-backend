@@ -149,11 +149,11 @@ public class Store {
   }
 
   public Float getLatitude() {
-    return rating;
+    return latitude;
   }
 
   public Float getLongitude() {
-    return rating;
+    return longitude;
   }
   
   public void setId(Long id) {
