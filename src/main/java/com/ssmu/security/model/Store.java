@@ -1,12 +1,15 @@
 package com.ssmu.security.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
@@ -78,6 +81,9 @@ public class Store {
 
   @Column(name = "longitude", nullable = false, length = 100, insertable = true, updatable = true)
   private Float longitude;
+
+  @OneToMany(mappedBy = "store")
+    private Set<Product> productos = new HashSet<>();
 
   public Store() {
   }
