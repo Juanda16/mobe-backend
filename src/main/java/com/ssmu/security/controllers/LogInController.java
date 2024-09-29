@@ -72,7 +72,6 @@ public class LogInController {
 
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticate(@RequestBody AuthenticationReq authenticationReq) {
-		System.out.println("authenticationReq: " + authenticationReq.toString());
 
 		logger.info("Autenticando al usuario {}", authenticationReq.getuserName());
 
@@ -196,6 +195,21 @@ public class LogInController {
 
 		Map<String, String> mensaje = new HashMap<>();
 		mensaje.put("Hola Usuario", auth.getPrincipal().toString());
+		return ResponseEntity.ok(mensaje);
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ResponseEntity<?> logout() {
+		logger.info("Cerrando la sesion");
+
+		var auth = SecurityContextHolder.getContext().getAuthentication();
+		SecurityContextHolder.getContext().setAuthentication(null);
+		logger.info("Datos del Usuario: {}", auth.getPrincipal());
+		logger.info("Datos de los Roles {}", auth.getAuthorities());
+		logger.info("Esta autenticado {}", auth.isAuthenticated());
+
+		Map<String, String> mensaje = new HashMap<>();
+		mensaje.put("contenido", "Sesion cerrada");
 		return ResponseEntity.ok(mensaje);
 	}
 
