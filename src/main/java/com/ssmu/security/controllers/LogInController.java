@@ -18,7 +18,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ssmu.security.model.AppUser;
 import com.ssmu.security.model.AuthenticationReq;
@@ -33,9 +39,12 @@ import com.ssmu.security.repositories.UserRepository;
 import com.ssmu.security.services.JwtUtilService;
 import com.ssmu.security.services.UserService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api_v1/auth")
+@Tag(name = "Login/Authentication")
 public class LogInController {
 
 	@Autowired

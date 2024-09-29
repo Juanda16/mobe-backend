@@ -45,18 +45,17 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         // .requestMatchers("/**").permitAll()
 
-                        .requestMatchers(mvc.pattern("/**"),
-                                mvc.pattern("/resources/**"))
-                        .permitAll()
-                // .requestMatchers("/api_v1/admin/**").hasRole("ADMIN")
-                // .requestMatchers("/api_v1/auth/**").permitAll()
-                // .requestMatchers("/api_v1/test/**").permitAll()
-                // .requestMatchers("/v2/api-docs/**").permitAll()
-                // .requestMatchers("/swagger-ui/**").permitAll()
-                // .requestMatchers("/v3/api-docs/**").permitAll()
-                // .requestMatchers("/api_v1/users/**").hasRole("ADMIN")
-                // .anyRequest().authenticated()
-                )
+                        // .requestMatchers(mvc.pattern("/**"),
+                        // mvc.pattern("/resources/**"))
+                        // .permitAll()
+                        .requestMatchers("/api_v1/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api_v1/auth/**").permitAll()
+                        .requestMatchers("/api_v1/test/**").permitAll()
+                        .requestMatchers("/v2/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .requestMatchers("/v3/api-docs/**").permitAll()
+                        .requestMatchers("/api_v1/users/**").hasRole("ADMIN"))
+                // .anyRequest().authenticated())
                 // .cors(Customizer.withDefaults())
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement((session) -> session

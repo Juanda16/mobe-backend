@@ -2,12 +2,16 @@ package com.ssmu.security.model;
 
 import java.io.Serializable;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class AuthenticationReq implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Schema(description = "username", name = "username", example = "user", required = true, type = "string")
     private String username;
 
+    @Schema(description = "password", name = "password", example = "userPassword", required = true, type = "string")
     private String password;
 
     public AuthenticationReq(String username, String password) {
@@ -34,5 +38,5 @@ public class AuthenticationReq implements Serializable {
     @Override
     public String toString() {
         return "AuthenticationReq [username=" + username + ", password=" + password + "]";
-    }   
+    }
 }
