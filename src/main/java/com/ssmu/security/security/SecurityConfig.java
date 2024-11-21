@@ -43,21 +43,21 @@ public class SecurityConfig {
                 })
 
                 .authorizeHttpRequests((authorize) -> authorize
-                        // .requestMatchers("/**").permitAll()
+                         .requestMatchers("/**").permitAll()
 
                         // .requestMatchers(mvc.pattern("/**"),
                         // mvc.pattern("/resources/**"))
                         // .permitAll()
-                        .requestMatchers("/api_v1/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api_v1/auth/**").permitAll()
-                        .requestMatchers("/api_v1/test/**").permitAll()
-                        .requestMatchers("/v2/api-docs/**").permitAll()
-                        .requestMatchers("/swagger-ui/**").permitAll()
-                        .requestMatchers("/v3/api-docs/**").permitAll()
-                        .requestMatchers("/api_v1/users/**").hasRole("ADMIN")
-                        .requestMatchers("/api_v1/categories/**").hasAnyRole("ADMIN", "MODERATOR")
-                        .requestMatchers("/api_v1/products/**").hasAnyRole("ADMIN","MODERATOR", "USER")
-                        .requestMatchers("/api_v1/stores/**").hasAnyRole("ADMIN", "USER")
+                        // .requestMatchers("/api_v1/admin/**").hasRole("ADMIN")
+                        // .requestMatchers("/api_v1/auth/**").permitAll()
+                        // .requestMatchers("/api_v1/test/**").permitAll()
+                        // .requestMatchers("/v2/api-docs/**").permitAll()
+                        // .requestMatchers("/swagger-ui/**").permitAll()
+                        // .requestMatchers("/v3/api-docs/**").permitAll()
+                        // .requestMatchers("/api_v1/users/**").hasRole("ADMIN")
+                        // .requestMatchers("/api_v1/categories/**").hasAnyRole("ADMIN", "MODERATOR")
+                        // .requestMatchers("/api_v1/products/**").hasAnyRole("ADMIN","MODERATOR", "USER")
+                        // .requestMatchers("/api_v1/stores/**").hasAnyRole("ADMIN", "USER")
 
 
 

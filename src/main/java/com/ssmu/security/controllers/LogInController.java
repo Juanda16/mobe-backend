@@ -88,6 +88,10 @@ public class LogInController {
 				.map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
+	
+	
+				System.out.println("roles: " + roles.toString());
+
 		System.out.println("userDetails: " + userDetails.toString());
 
 		final String jwt = jwtUtilService.generateToken(userDetails);

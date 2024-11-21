@@ -1,10 +1,5 @@
 package com.ssmu.security.services;
 
-import io.jsonwebtoken.Claims;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,12 +9,16 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
 @Service
 public class JwtUtilService {
-    // LLAVE_SECRETA => [Base64] => TExBVkVfTVVZX1NFQ1JFVEE=
+    
     private static final String JWT_SECRET_KEY = "TExBVkVfTVVZX1NFQ1JFVEE=";
 
-    public static final long JWT_TOKEN_VALIDITY = 1000 * 60 * 60 * (long) 8; // 8 Horas
+    public static final long JWT_TOKEN_VALIDITY = 1000 * 60 * 60 * (long) 2; // 2 Horas
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
